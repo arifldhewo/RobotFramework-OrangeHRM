@@ -7,6 +7,7 @@ Resource    ../Resources/Pages/NavPage/nav-page.robot
 Resource    ../Resources/Pages/SidePage/side-page.robot
 Resource    ../Resources/Pages/MyInfoPage/my-info-page.robot
 Resource    ../Resources/Pages/LeavePage/leave-page.robot
+Resource    ../Resources/Pages/AdminPage/job-page.robot
 
 
 *** Variables ***
@@ -82,6 +83,15 @@ Update Contact Details
     ...    EMAIL_WORK=lalalal@example.com     
     ...    EMAIL_OTHER=lalalal@example.org    
     ...    COMMENT=Test 1234
+    Close Browser
+
+Add Job Title
+    Initialization Browser
+    User Already Login
+    Click To Admin Page
+    Input Add Job Title And Submit it    
+    ...    JOB_TITLE=Cleaning Services    
+    ...    JOB_DESC=Cleaning A Whole Building
     Close Browser
 
 Logout
