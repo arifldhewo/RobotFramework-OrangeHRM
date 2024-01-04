@@ -16,16 +16,18 @@ ${LICENSE_EXPIRE_INPUT}          xpath:/html/body/div/div[1]/div[2]/div[2]/div/d
 ${SSN_NUMBER_INPUT}              xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div[3]/div[1]/div/div[2]/input
 ${SIN_NUMBER_INPUT}              xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div[3]/div[2]/div/div[2]/input
 ${NATIONALITY_SELECT}            xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div[1]/div[1]/div/div[2]/div/div
+${NATIONALITY_INDONESIA_VAL}     xpath://div[@id='app']/div/div[2]/div[2]/div/div/div/div[2]/div/form/div[3]/div/div/div/div[2]/div/div[2]/div[84]
 ${MARITAL-STATUS_SELECT}         xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div[1]/div[2]/div/div[2]/div/div
 ${DOB_INPUT}                     xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div[2]/div[1]/div/div[2]/div/div/input
 ${MALE_RADIO}                    xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div[2]/div[2]/div/div[2]/div[1]
 ${FEMALE_RADIO}                  xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div[2]/div[2]/div/div[2]/div[2]
 ${MILITARY-SERVICE_INPUT}        xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[4]/div/div[1]/div/div[2]/input
 ${SMOKER_CHECKBOX}               xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[4]/div/div[2]/div/div[2]/div/label/span/i
-${SAVE-PERSONAL-DETAILS_BUTTON}  xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[5]/button
+${SAVE-PERSONAL-DETAILS_BUTTON}  xpath://button[@type='submit']
 
 ${BLOOD-TYPE_INPUT}              xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[2]/div/form/div[1]/div/div/div/div[2]/div/div/div[1]
-${SAVE-CUSTOM-FIELDS_BUTTON}     xpath://div[@class='orangehrm-custom-fields']//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']
+${BLOOD-TYPE_O+_VAL}             xpath://div[@id='app']/div/div[2]/div[2]/div/div/div/div[2]/div[2]/div/form/div/div/div/div/div[2]/div/div[2]/div[6]
+${SAVE-CUSTOM-FIELDS_BUTTON}     xpath:(//button[@type='submit'])[2]
 
 ${ADD-ATTACHMENT_BUTTON_PERSONALDETAILS}         css:.oxd-button--text
 ${FILE_ATTACHMENT_INPUT}         css:.oxd-file-input
@@ -40,6 +42,7 @@ ${CITY_INPUT}                    xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/d
 ${STATE/PROVINCE_INPUT}          xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[4]/div/div[2]/input
 ${ZIP/POSTAL-CODE_INPUT}         xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[5]/div/div[2]/input
 ${COUNTRY_SELECT}                xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[1]/div/div[6]/div/div[2]/div/div/div[1]
+${COUNTRY_INDONESIA_VAL}         xpath://div[(text() = 'Indonesia' or . = 'Indonesia')]
 
 ${HOME-NUMBER_INPUT}             xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[1]/div/div[2]/input
 ${MOBILE-NUMBER_INPUT}           xpath://*[@id="app"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div/div[2]/div/div[2]/input
@@ -60,12 +63,15 @@ ${SAVE-ATTACHMENT_BUTTON_CONTACTDETAILS}        xpath://*[@id="app"]/div[1]/div[
 
 *** Keywords ***
 
+# DISCLAIMER, The website changing it's element, this is list of the element that is disappeared
+# NICKNAME_INPUT, SSN_NUMBER_INPUT, SIN_NUMBER_INPUT, MILITARY_SERVICE_INPUT, SMOKER_CHECKBOX 
+# Check Image Evidence on Resources/Images/
+
 Input Credentials Data On Personal Details And Submit
     [Arguments]    ${FIRST_NAME}    ${MIDDLE_NAME}    
-    ...    ${LAST_NAME}    ${NICK_NAME}    ${EMPLOYEE_ID}    
-    ...    ${OTHER_ID}    ${DRIVER_LICENSE}    ${LICENSE_EXPIRE}    
-    ...    ${SSN_NUMBER}    ${SIN_NUMBER}    ${NATIONALITY}    
-    ...    ${MARITAL_STATUS}    ${DOB}    ${MILITARY_SERVICE}
+    ...    ${LAST_NAME}   ${EMPLOYEE_ID}    ${OTHER_ID}
+    ...    ${DRIVER_LICENSE}    ${LICENSE_EXPIRE}    
+    ...    ${MARITAL_STATUS}    ${DOB}
     Sleep    2s
     Press Keys    ${FIRST_NAME_INPUT}    CTRL+a BACKSPACE
     Input Text    ${FIRST_NAME_INPUT}    ${FIRST_NAME}
@@ -73,8 +79,6 @@ Input Credentials Data On Personal Details And Submit
     Input Text    ${MIDDLE_NAME_INPUT}    ${MIDDLE_NAME}
     Press Keys    ${LAST_NAME_INPUT}    CTRL+a BACKSPACE
     Input Text    ${LAST_NAME_INPUT}    ${LAST_NAME}
-    Press Keys    ${NICK_NAME_INPUT}    CTRL+a BACKSPACE
-    Input Text    ${NICK_NAME_INPUT}    ${NICK_NAME}
     Press Keys    ${EMPLOYEE-ID_INPUT}    CTRL+a BACKSPACE
     Input Text    ${EMPLOYEE-ID_INPUT}    ${EMPLOYEE_ID}
     Press Keys    ${OTHER-ID_INPUT}    CTRL+a BACKSPACE
@@ -84,24 +88,19 @@ Input Credentials Data On Personal Details And Submit
     Press Keys    ${LICENSE_EXPIRE_INPUT}    CTRL+a BACKSPACE
     Press Keys    ${LICENSE_EXPIRE_INPUT}    BACKSPACE
     Input Text    ${LICENSE_EXPIRE_INPUT}    ${LICENSE_EXPIRE}
-    Press Keys    ${SSN_NUMBER_INPUT}    CTRL+a BACKSPACE
-    Input Text    ${SSN_NUMBER_INPUT}    ${SSN_NUMBER}
-    Press Keys    ${SIN_NUMBER_INPUT}    CTRL+a BACKSPACE
-    Input Text    ${SIN_NUMBER_INPUT}    ${SIN_NUMBER}
-    # Input Text    ${NATIONALITY_SELECT}    ${NATIONALITY}
-    # Input Text    ${MARITAL-STATUS_SELECT}    ${MARITAL_STATUS}
+    Click Element    ${NATIONALITY_SELECT}
+    Click Element    ${NATIONALITY_INDONESIA_VAL}
     Press Keys    ${DOB_INPUT}    CTRL+a BACKSPACE
     Press Keys    ${DOB_INPUT}    BACKSPACE
     Input Text    ${DOB_INPUT}    ${DOB}
-    Press Keys    ${MILITARY-SERVICE_INPUT}    CTRL+a BACKSPACE
-    Input Text    ${MILITARY-SERVICE_INPUT}    ${MILITARY_SERVICE}
-    Click Element   ${SMOKER_CHECKBOX}
     Click Button    ${SAVE-PERSONAL-DETAILS_BUTTON}
 
     Sleep    2s
 
-    # Get Selected List Values      ${BLOOD-TYPE_INPUT}
-    # Click Button    ${SAVE-CUSTOM-FIELDS_BUTTON}
+    Click Element    ${BLOOD-TYPE_INPUT}
+    Click Element    ${BLOOD-TYPE_O+_VAL}
+    Click Button     ${SAVE-CUSTOM-FIELDS_BUTTON}
+    Sleep    2s
 
 Click To Contact Details
     Click Link    ${CONTACT_DETAILS_LIST}
@@ -109,8 +108,8 @@ Click To Contact Details
 
 Input Credentials Data On Contact Details Page And Submit
     [Arguments]    ${STREET_1}    ${STREET_2}    ${CITY}    
-    ...            ${STATE/PROVINCE}    ${ZIP/POSTAL-CODE}    ${COUNTRY}    
-    ...            ${TEL_HOME}    ${TEL_MOB}    ${TEL_WORK}    ${EMAIL_WORK}    
+    ...            ${STATE/PROVINCE}    ${ZIP/POSTAL-CODE}    ${TEL_HOME}
+    ...            ${TEL_MOB}    ${TEL_WORK}    ${EMAIL_WORK}    
     ...            ${EMAIL_OTHER}    ${COMMENT}
     Press Keys    ${STREET-1_INPUT}    CTRL+a BACKSPACE
     Input Text    ${STREET-1_INPUT}    ${STREET_1}
@@ -122,7 +121,8 @@ Input Credentials Data On Contact Details Page And Submit
     Input Text    ${STATE/PROVINCE_INPUT}    ${STATE/PROVINCE}
     Press Keys    ${ZIP/POSTAL-CODE_INPUT}    CTRL+a BACKSPACE
     Input Text    ${ZIP/POSTAL-CODE_INPUT}    ${ZIP/POSTAL-CODE}
-    # Input Text    ${COUNTRY_SELECT}    ${COUNTRY}
+    Click Element    ${COUNTRY_SELECT}
+    Click Element    ${COUNTRY_INDONESIA_VAL}
 
     Press Keys    ${HOME-NUMBER_INPUT}    CTRL+a BACKSPACE
     Input Text    ${HOME-NUMBER_INPUT}    ${TEL_HOME}

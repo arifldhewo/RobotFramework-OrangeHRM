@@ -11,3 +11,4 @@ ${LOGOUT_LIST}             xpath://li[.='Logout']
 Logout
     Click Element    locator=${DROPDOWN_FIRST_STATE}
     Click Element    locator=${LOGOUT_LIST}
+    Sleep     2s

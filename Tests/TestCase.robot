@@ -36,11 +36,11 @@ Apply Leave
     Click To Leave Page
     Input Leave Data To Apply And Submit   
     ...    LEAVE_TYPE=CAN - Bereavement    
-    ...    FROM_DATE=2024-01-01     
-    ...    TO_DATE=2024-01-07    
+    ...    FROM_DATE=2024-01-05     
+    ...    TO_DATE=2024-01-05    
     ...    COMMENT=CUTI    
     ...    DURATION=All Days
-    # Close Browser
+    Close Browser
 
 Cancel Leave
     Initialization Browser
@@ -57,18 +57,13 @@ Update Personal Details
     ...    FIRST_NAME=Danny
     ...    MIDDLE_NAME=Simala
     ...    LAST_NAME=Winters
-    ...    NICK_NAME=Dan
     ...    EMPLOYEE_ID=0001
     ...    OTHER_ID=0001
     ...    DRIVER_LICENSE=912712943
     ...    LICENSE_EXPIRE=2024-06-01
-    ...    SSN_NUMBER=0100
-    ...    SIN_NUMBER=0200
-    ...    NATIONALITY=3
     ...    MARITAL_STATUS=Single
     ...    DOB=2004-01-01
-    ...    MILITARY_SERVICE=YES
-    # Close Browser
+    Close Browser
 
 Update Contact Details
     Initialization Browser
@@ -81,14 +76,13 @@ Update Contact Details
     ...    CITY=Jakarta Selatan    
     ...    STATE/PROVINCE=DKI Jakarta    
     ...    ZIP/POSTAL-CODE=12260    
-    ...    COUNTRY=Indonesian    
     ...    TEL_HOME=021 0284 1237    
     ...    TEL_MOB=+6288888888888    
     ...    TEL_WORK=021 12371 1237    
     ...    EMAIL_WORK=lalalal@example.com     
     ...    EMAIL_OTHER=lalalal@example.org    
     ...    COMMENT=Test 1234
-    # Close Browser
+    Close Browser
 
 Logout
     Initialization Browser
