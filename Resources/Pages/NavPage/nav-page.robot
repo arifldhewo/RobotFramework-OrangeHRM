@@ -4,7 +4,7 @@ Library    SeleniumLibrary
 
 *** Variables ***
 ${DROPDOWN_FIRST_STATE}    css:.oxd-userdropdown
-${LOGOUT_LIST}    xpath://li[.='Logout']
+${LOGOUT_LIST}             xpath://li[.='Logout']
 
 *** Keywords ***
 
